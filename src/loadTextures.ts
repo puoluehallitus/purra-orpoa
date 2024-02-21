@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-import snakes from 'url:./snakes.jpg';
+import rocks from 'url:./rocks.jpg';
 import ending from 'url:./ending.png';
 
 const textureLoader = new THREE.TextureLoader();
@@ -14,7 +14,7 @@ const loadTexture = (textureURL: string): Promise<THREE.Texture> => {
 };
 
 const loadTextures = (): Promise<THREE.Texture[]> => Promise.all([
-  loadTexture(snakes),
+  loadTexture(rocks),
   loadTexture(ending),
 ]);
 

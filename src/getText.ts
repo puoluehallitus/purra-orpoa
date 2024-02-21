@@ -2,7 +2,20 @@ import * as THREE from 'three';
 import { Font } from 'three/examples/jsm/loaders/FontLoader';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
 
-export default (font: Font, text: string, position: THREE.Vector3, offset: number = 0) => {
+export default (
+  font: Font,
+  text: string,
+  position: THREE.Vector3,
+  {
+    x: offsetX = 0,
+    y: offsetY = 0,
+    z: offsetZ = 0
+  }: {
+    x?: number;
+    y?: number;
+    z?: number;
+  } = {}
+) => {
   const geometry = new TextGeometry(text, {
     font: font,
     size: 0.5,
@@ -25,8 +38,8 @@ export default (font: Font, text: string, position: THREE.Vector3, offset: numbe
   });
 
   const mesh = new THREE.Mesh(geometry, material);
-  mesh.position.x = position.x + offset;
-  mesh.position.y = position.y;
-  mesh.position.z = position.z;
+  mesh.position.x = position.x + offsetX;
+  mesh.position.y = position.y + offsetY;
+  mesh.position.z = position.z + offsetZ;
   return mesh;
 };
