@@ -97,7 +97,6 @@ function fireOnce(id: string, callback: Function) {
     resize();
     if (!sound.isPlaying) {
       sound.play();
-      requestAnimationFrame(render);
     }
   });
 
@@ -109,6 +108,7 @@ function fireOnce(id: string, callback: Function) {
   };
 
   resize();
+  requestAnimationFrame(render);
   window.addEventListener('resize', resize);
 
   const fonts = await loadFont();
